@@ -5,9 +5,9 @@ require 'spec_helper'
 
 describe "LayoutLinks" do
   
-    it "should find a home page  at '/" do
+    it "should find a home page  at '/'" do
       get '/'
-      response.status have_selector('title', :content => "Accueil")
+      response.should have_selector('title', :content => "Accueil")
     end
     
     it "should find a contact page at /contact" do
