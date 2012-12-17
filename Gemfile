@@ -5,13 +5,10 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', :group => :development
 
 
 
-group :development, :test do
-  gem "sqlite3-ruby", "~> 1.3.2", :require => "sqlite3"
-end
+
 
 group :production, :staging do
   gem "pg"
@@ -48,11 +45,17 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development do
+      gem 'sqlite3'
+
 	gem 'rspec-rails'
+       gem "sqlite3-ruby", "~> 1.3.2", :require => "sqlite3"
 end
 
 group :test do
+       gem 'sqlite3'
+
 	gem 'rspec'
 	gem 'webrat'
 	gem 'spork'
+        gem "sqlite3-ruby", "~> 1.3.2", :require => "sqlite3"
 end
