@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 # == Schema Information
 #
 # Table name: users
@@ -56,6 +58,13 @@ describe User do
       it "devrait rejeter un email double" do
         # Place un utilisateur avec un email donné dans BD
         User.create!(@attr)
+        user_with_duplicate_email = User.new(@attr)
+        user_with_duplicate_email.should_not be_valid
+      end
+      
+      it "devrait rejeter une adresse email invalide jusqu'à la casse" do
+        upcased_email = @attr[:email].upcase
+        User.create!(@attr.merge(:email => upcased_email))
         user_with_duplicate_email = User.new(@attr)
         user_with_duplicate_email.should_not be_valid
       end
